@@ -1,0 +1,245 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.60.0-nightly",
+            "commitHash": "88fb06a1f331926bccb448acdb52966fd1ec8a92",
+            "commitDate": "2022-02-05",
+            "channel": "Nightly",
+            "short": "rustc 1.60.0-nightly (88fb06a1f 2022-02-05)"
+        },
+        "contractCrate": {
+            "name": "nf_tickets",
+            "version": "0.1.0"
+        },
+        "framework": {
+            "name": "elrond-wasm",
+            "version": "0.30.0"
+        }
+    },
+    "name": "Lottery",
+    "constructor": {
+        "inputs": [],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "createTicketPool",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "pool_name",
+                    "type": "bytes"
+                },
+                {
+                    "name": "pool_ticket_id",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "pool_ticket_nonce",
+                    "type": "u64"
+                },
+                {
+                    "name": "ticket_price",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "opt_fee_percentage",
+                    "type": "optional<BigUint>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_used_as_payment",
+                    "type": "optional<TokenIdentifier>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_used_as_payment_nonce",
+                    "type": "optional<u64>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "docs": [
+                "BUY TICKET"
+            ],
+            "name": "buy_ticket",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [
+                {
+                    "name": "pool_name",
+                    "type": "bytes"
+                },
+                {
+                    "name": "ticket_quantity",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "sell_ticket",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [
+                {
+                    "name": "pool_name",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "createFreeTicketPool",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [
+                {
+                    "name": "pool_name",
+                    "type": "bytes"
+                },
+                {
+                    "name": "total_free_tickets",
+                    "type": "u32"
+                },
+                {
+                    "name": "free_tickets_per_user",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "claimFreeTicket",
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "pool_name",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getPoolInfo",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "pool_name",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "PoolInfo"
+                }
+            ]
+        },
+        {
+            "name": "getPaymentTokenInfo",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "pool_name",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "TokenTag"
+                }
+            ]
+        },
+        {
+            "name": "getTicketInfo",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "pool_name",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "TicketTag"
+                }
+            ]
+        }
+    ],
+    "hasCallback": false,
+    "types": {
+        "PoolInfo": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "circulating_supply",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "locked_esdt_value",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "sc_ticket_balance",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "total_free_tickets",
+                    "type": "u32"
+                },
+                {
+                    "name": "free_tickets_per_user",
+                    "type": "u32"
+                },
+                {
+                    "name": "free_tickets_left",
+                    "type": "u32"
+                }
+            ]
+        },
+        "TicketTag": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "ticket_id",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "ticket_nonce",
+                    "type": "u64"
+                },
+                {
+                    "name": "ticket_amount",
+                    "type": "BigUint"
+                }
+            ]
+        },
+        "TokenTag": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "payment_token_id",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "payment_token_nonce",
+                    "type": "u64"
+                },
+                {
+                    "name": "payment_token_amount",
+                    "type": "BigUint"
+                }
+            ]
+        }
+    }
+}
