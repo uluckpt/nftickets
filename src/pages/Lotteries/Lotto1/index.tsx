@@ -110,7 +110,7 @@ const Lotto1 = () => {
         { isActive?(
         <div className ='card-text my-3'>
           <span className='h5 '>Prize </span><span className='badge badgePrize rounded-pill '>
-              <span className='h3'>{current_prize} </span>
+              <span className='h3'>{total_tickets*ticketPrice} </span>
               <span className='h5'>{tId} </span>
           </span>
         </div>
