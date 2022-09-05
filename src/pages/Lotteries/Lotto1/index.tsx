@@ -22,11 +22,12 @@ const Lotto1 = () => {
 
   const { account } = useGetAccountInfo();
   const addressOfUser = new Address(account.address);
-  //console.log(addressOfUser);
+  const isLoggedIn = Boolean(account.address);
+
   const lottoName=  LotteryNames.Lotto1;
   const lottery_name= BytesValue.fromUTF8(lottoName);
 
-  const isLoggedIn = Boolean(account.address);
+  
 
   const getData = useCallback( async () => { 
     const interactor = await createInteractor(addressOfUser, new Address(lottoContractAddress));
