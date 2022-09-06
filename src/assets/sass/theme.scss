@@ -113,9 +113,10 @@ html {
 }
 
 .nfticket-logo {
-  
-  width: 120px;
-  height:40px;
+  width: 100px;
+  height:50px;
+  border-radius: 0.7em;
+  background-color: #f3eded;
 }
 .elrond-logo {
   width: 100px;
@@ -181,8 +182,13 @@ html {
   box-shadow: 0 5px 10px rgba(0,0,0,.2);
   text-align: center;
   align-items: center;
-  
-  
+}
+
+.card-dashboard {
+  border-radius:2em;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  text-align: center;
+  align-items: center;
 }
 
 .card-logo {

@@ -53,7 +53,7 @@ const Lotto1 = () => {
   //console.log (total_tickets);
   const tickets_left= info?.getFieldValue("tickets_left").valueOf() ;
   const current_prize= info?.getFieldValue("prize_pool").valueOf();
-  //console.log(current_prize);
+  console.log(current_prize);
   const tickets_sold=total_tickets-tickets_left;
   const percnt=Math.round ((tickets_sold/total_tickets)*100);
   const ticketId= info?.getFieldValue("token_identifier").valueOf();
@@ -100,7 +100,7 @@ const Lotto1 = () => {
 
   return (
     
-    <div className="card card-lotto bg-crd  m-2 ">
+    <div className="card card-lotto bg-crd  my-2 mx-auto ">
       <div className="card-body ">
         <h2 className="card-title b mt-2 ">{ lottoName }</h2>
           <span className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success h5">

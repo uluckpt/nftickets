@@ -115,7 +115,7 @@ const Lotto3 = () => {
   }, []);
 
   return (
-    <div className="card card-lotto m-2 ">
+    <div className="card card-lotto my-3 mx-auto ">
       <div className="card-body ">
         <h2 className="card-title b m-2 ">{ lottoName }</h2>
           <span className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success h5">

@@ -117,7 +117,7 @@ const Actions = () => {
 
   return (
     <div className="row justify-content-md-center">
-      <div className=" card card-dash bg-crd  ">
+      <div className=" card card-dash bg-crd mx-auto ">
         <div className="card-body ">
           <select 
             className="form-select form-select-lg text-center mt-2" 

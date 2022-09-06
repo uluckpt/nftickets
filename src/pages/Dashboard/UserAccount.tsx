@@ -1,5 +1,5 @@
 import  React, { useEffect, useState } from 'react';
-import {  FormatAmount } from '@elrondnetwork/dapp-core/UI';
+import {  FormatAmount,Trim } from '@elrondnetwork/dapp-core/UI';
 import { useGetAccountInfo } from '@elrondnetwork/dapp-core/hooks';
 import {  NonFungibleTokenOfAccountOnNetwork, ProxyNetworkProvider } from '@elrondnetwork/erdjs-network-providers/out';
 import { Address } from '@elrondnetwork/erdjs/out';
@@ -57,59 +57,65 @@ const UserAccount = () => {
   },[user_egld_balance])
 
   return (
-
-    <div className='  py-1' data-testid='topInfo'>
-      <div className='mb-1'>
-        <h5 className='text-center '>
-        <FormatAmount
-          value={account.balance} /></h5>
-      </div>
-      <div className=' mt-1'>
-        <h5 className='text-start'>Your Tokens </h5>
-      </div>
-      <div className='table-responsive '>
-        <table className='tokens table pb-3'>
-          <thead>
-            <tr className=''>
-              <th className='border-0 font-weight-normal'>Id</th>
-              <th className='border-0 font-weight-normal'>Balance</th>
-            </tr>
-          </thead>
-          <tbody className='tokenList'>
-            {tokenList?.map(token => {
-              return (
-                <tr key={token.id}>
-                  <td className='token-id'> {token.id}</td>
-                  <td className='token-balance'>{token.balance}</td>
+    <div className=" card-responsive card-dashboard my-2 ">
+      <div className="card-body ">
+        <div className='  py-1' >
+          <div className='mt-1'>
+            <h5 className='text-center '>
+            <FormatAmount
+            value={account.balance} /></h5>
+          </div>
+          <div className=' mt-1'>
+            <h5 className='text-start'>Your Tokens </h5>
+          </div>
+          <div className='table-responsive '>
+            <table className='tokens table pb-3'>
+              <thead>
+                <tr className=''>
+                  <th className='border-0 font-weight-normal'>Id</th>
+                  <th className='border-0 font-weight-normal'>Balance</th>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-      <div className='table-responsive mt-1 '>
-      <h5 className='text-start'>Your NFTs :</h5>
-        <table className='nfts table pb-3'>
-          <thead>
-            <tr className=''>
-              <th className='border-0 font-weight-normal'>Id</th>
-              <th className='border-0 font-weight-normal'>Balance</th>
-            </tr>
-          </thead>
-          <tbody data-testid='transactionsList'>
-            {data?.map((nft) => {
-              return (
-                <tr key={nft.identifier  }>
-                  <td className='nft-id'> {nft.identifier}</td>
-                  <td className='nft-balance'> {nft.supply.toNumber()}</td> 
+              </thead>
+              <tbody className='tokenList'>
+                {tokenList?.map(token => {
+                  return (
+                    <tr key={token.id}>
+                      <td className='token-id'> {token.id}</td>
+                      <td className='token-balance'>{token.balance}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <div className='table-responsive mt-2 '>
+            <h5 className='text-start'>Your NFTs :</h5>
+            <table className='nfts table pb-3'>
+              <thead>
+                <tr className=''>
+                  <th className='border-0 font-weight-normal'>Id</th>
+                  <th className='border-0 font-weight-normal'>Balance</th>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </thead>
+              <tbody data-testid='transactionsList'>
+                {data?.map((nft) => {
+                  return (
+                    <tr key={nft.identifier  }>
+                      <td className='nft-id'> {nft.identifier}</td>
+                      <td className='nft-balance'> {nft.supply.toNumber()}</td> 
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className ='text'>address : 
+            <Trim text={account.address} /> 
+          </p>
+        </div>
       </div>
-      <p className ='text'>address :{account.address}</p>
     </div>
+
   );
 };
 

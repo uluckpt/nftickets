@@ -13,16 +13,16 @@ const Dashboard = () => {
 
     
     <div className=' d-flex flex-fill align-items-center container '>
-      <div className='row align-items-center mb-3'>
-        <div className='col align-self-center'>
+      <div className='row align-items-center m-3'>
+        <div className='col align-self-center mx-2'>
           <h2 className="text-center b"> Contract Balance</h2>
           <ContractAccount/>
         </div>
         {isLoggedIn ?(
-        <div className='col  align-self-center'>
-          <h2 className="text-center b">Your Balance</h2>
-          <UserAccount/>
-        </div>
+          <div className='col  align-self-center mx-2'>
+            <h2 className="text-center b">Your Balance</h2>
+            <UserAccount/>
+          </div>
         ):null}
       </div>
     </div>
